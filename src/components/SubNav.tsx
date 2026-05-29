@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function SubNav() {
+export default function SubNav({ onMenuClick }: { onMenuClick?: () => void }) {
   const pathname = usePathname();
 
   const links = [
@@ -16,6 +16,11 @@ export default function SubNav() {
   return (
     <div className="sub-nav">
       <div className="sub-nav-inner">
+        <button className="hamburger" onClick={onMenuClick} aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <span className="sub-nav-product">Apple Design System</span>
         <div className="sub-nav-links">
           {links.map((link) => (
