@@ -306,7 +306,7 @@ body {
   margin-left: 240px;
   margin-top: 96px;
   padding: 32px 48px 48px;
-  max-width: 1200px;
+  max-width: 100%;
   transition: margin-left 0.25s ease;
 }
 
