@@ -32,13 +32,18 @@ const sections = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
 
   const isActive = (href: string) => pathname === href;
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${open ? 'sidebar--open' : ''}`}>
+      <div className="sidebar__close" onClick={onClose}>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      </div>
       {sections.map((section) => (
         <div className="sidebar-section" key={section.title}>
           <h4>{section.title}</h4>
@@ -47,6 +52,7 @@ export default function Sidebar() {
               key={link.label}
               href={link.href}
               className={isActive(link.href) ? 'active-link' : ''}
+              onClick={onClose}
             >
               {link.label}
             </Link>
@@ -54,8 +60,8 @@ export default function Sidebar() {
         </div>
       ))}
       <div className="sidebar-section" style={{ borderTop: '1px solid var(--apple-hairline)', paddingTop: 16 }}>
-        <Link href="#" style={{ fontSize: 13, color: 'var(--apple-ink-muted-48)' }}>Settings</Link>
-        <Link href="#" style={{ fontSize: 13, color: 'var(--apple-ink-muted-48)' }}>Sign Out</Link>
+        <Link href="#" style={{ fontSize: 13, color: 'var(--apple-ink-muted-48)' }} onClick={onClose}>Settings</Link>
+        <Link href="#" style={{ fontSize: 13, color: 'var(--apple-ink-muted-48)' }} onClick={onClose}>Sign Out</Link>
       </div>
     </aside>
   );

@@ -2,10 +2,15 @@
 
 import Link from 'next/link';
 
-export default function GlobalNav() {
+export default function GlobalNav({ onMenuClick }: { onMenuClick: () => void }) {
   return (
     <nav className="global-nav">
       <div className="global-nav-inner">
+        <button className="hamburger" onClick={onMenuClick} aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <Link href="/" style={{ fontWeight: 600, fontSize: 13, opacity: 0.9, color: 'var(--apple-on-dark)', textDecoration: 'none', marginRight: 'auto' }}>
            Design Showcase
         </Link>
@@ -17,7 +22,6 @@ export default function GlobalNav() {
         </div>
         <div style={{ display: 'flex', gap: 20, marginLeft: 'auto' }}>
           <a href="#">Search</a>
-          <a href="#">Menu</a>
         </div>
       </div>
     </nav>

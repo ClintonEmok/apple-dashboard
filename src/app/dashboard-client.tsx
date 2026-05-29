@@ -69,6 +69,7 @@ function TopPages() {
         <a href="#" style={{ fontSize: 14, color: 'var(--apple-primary)', textDecoration: 'none' }}>Report →</a>
       </div>
       <div style={{ padding: '16px 24px 0' }}>
+        <div className="table-wrap">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
@@ -89,6 +90,7 @@ function TopPages() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
       <div style={{ padding: '8px 24px', borderTop: '1px solid var(--apple-divider-soft)', fontSize: 12, color: 'var(--apple-ink-muted-48)' }}>
         Total sessions: 15,912 · Avg. duration: 4m 32s
@@ -201,6 +203,7 @@ function ProjectsTable() {
         <button className="btn btn-primary" style={{ fontSize: 14, padding: '7px 18px' }}>+ New Project</button>
       </div>
       <div style={{ padding: '16px 24px 0' }}>
+        <div className="table-wrap">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
@@ -227,6 +230,7 @@ function ProjectsTable() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
@@ -238,7 +242,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div style={{ marginBottom: 32, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
         <div>
-          <h1 style={{ fontFamily: 'var(--apple-font-display)', fontSize: 40, fontWeight: 600, lineHeight: 1.1, color: 'var(--apple-ink)' }}>Dashboard</h1>
+          <h1 className="dashboard-title" style={{ fontFamily: 'var(--apple-font-display)', fontWeight: 600, lineHeight: 1.1, color: 'var(--apple-ink)' }}>Dashboard</h1>
           <p style={{ fontSize: 17, fontWeight: 400, lineHeight: 1.47, letterSpacing: '-0.374px', color: 'var(--apple-ink-muted-48)', marginTop: 4 }}>
             Welcome back, Alex. Here's a live showcase of Apple's design system at work.
           </p>
@@ -250,18 +254,18 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 16 }}>
+      <div className="grid-stats">
         {stats.map((s) => <StatCard key={s.label} s={s} />)}
       </div>
 
       {/* Revenue + Top Pages */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="grid-revenue">
         <RevenueChart />
         <TopPages />
       </div>
 
       {/* Traffic + Devices + Activity */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 16 }}>
+      <div className="grid-cards">
         <TrafficSources />
         <DeviceDonut />
         <ActivityFeed />
